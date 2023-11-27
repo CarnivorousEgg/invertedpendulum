@@ -1,21 +1,22 @@
 import gymnasium as gym
-import sympy
-xxx=sympy.symbols('x')
+#import sympy
+#xxx=sympy.symbols('x')
 
 class PID:
     def __init__(self, kp,ki, kd, goal):
         self.kp=kp
         self.kd=kd
-        self.ki=ki
+        #self.ki=ki
         self.goal=goal
         self.last_error=0
 
     def observe(self, x):
         error=self.goal-x
         d_error=error-self.last_error
-        i_int=sympy.integrate(error, xxx)
+        #i_int=sympy.integrate(error, xxx)
         self.last_error=error
-        return self.kp*error+self.kd*d_error+self.ki*d_error
+        
+        return self.kp*error+self.kd*d_error
 
 
 class Controller:
